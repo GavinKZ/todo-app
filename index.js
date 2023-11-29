@@ -44,16 +44,16 @@ app.get('/', (requisicao, resposta) => {
             return console.log(erro)
         }
 
-        const tarefa = dados.map((dado) => {
+        const tarefas = dados.map((dado) => {
             return {
                 id: dado.id,
                 descricao: dado.descricao,
                 completa: dado.completa === 0 ? false : true
             }
         })
-    })
 
-    resposta.render("home")
+        resposta.render("home", { tarefas })
+    })
 })
 
 const conexao = mysql.createConnection({
